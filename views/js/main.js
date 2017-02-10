@@ -378,7 +378,7 @@ var pizzaElementGenerator = function(i) {
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
   pizzaImageContainer.style.width="35%";
 
-  pizzaImage.src = "images/pizza.png";
+  pizzaImage.src = "images/pizza-small_small.png";
   pizzaImage.classList.add("img-responsive");
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
@@ -454,10 +454,10 @@ var resizePizzas = function(size) {
         newWidth = 25;
         break;
       case "2":
-        newWith = 33.3;
+        newWidth = 33.3;
         break;
       case "3":
-        newWith = 50;
+        newWidth = 50;
         break;
       default: 
         console.log("bug in sizeSwitcher");
@@ -512,12 +512,13 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   frame++;
-  window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
+  window.performance.mark("mark_start_frame");
+  var currentScrollY = lastScrollY;
+  var items = document.getElementsByClassName('mover');
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    var phase = Math.sin((currentScrollY / 1250) + (i % 5));
+    items[i].style.transform = "translateX(" + 100 * phase + "px)";
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -530,22 +531,34 @@ function updatePositions() {
   }
 }
 
+var lastScrollY = 0;
+// Handle pizza movements on the background when user scroll the window 
+function scrollHandler() {
+  lastScrollY = window.scrollY;
+  requestAnimationFrame(updatePositions);
+}
+
+
 // runs updatePositions on scroll
-window.addEventListener('scroll', updatePositions);
+window.addEventListener('scroll', scrollHandler);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+  var movingPizzas = document.getElementById("movingPizzas1");
   for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza.png";
+    elem.src = "images/pizza-small_small.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
+    elem.style.transform = 'translate3d(0, 0, 0) translate(0px)'; // 3d transform
+    elem.classList.add("img-responsive");
+    elem.basicLeftPosition = (i % cols) * s;
+    elem.style.left = elem.basicLeftPosition + 'px';
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    movingPizzas.appendChild(elem);
   }
   updatePositions();
 });
