@@ -96,7 +96,7 @@ module.exports = function(grunt) {
             quality: 10
           },{
             name: 'large',
-            width: '50%',
+            width: '100%',
             suffix: '_large',
             quality: 40
           }]
