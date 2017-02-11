@@ -117,6 +117,13 @@ module.exports = function(grunt) {
         ]
       }
     },
+    uncss: {
+      dist: {
+        files: {
+          'dist/views/css/bootstrap-grid.min.css': ['views/pizza.html']
+        }
+      }
+    }
   });
   
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -124,6 +131,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-responsive-images');
+  grunt.loadNpmTasks('grunt-uncss');
 
   grunt.registerTask('default', ['uglify', 'imagemin', 'cssmin', 'htmlmin', 'responsive_images']);
 
