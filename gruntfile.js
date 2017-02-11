@@ -91,9 +91,9 @@ module.exports = function(grunt) {
           engine: 'im',
           sizes: [
           {
-            name: 'extra-small',
+            name: 'xsmall',
             width: '10%',
-            suffix: '_exsmall',
+            suffix: '_xsmall',
             quality: 5
           },
           {
