@@ -133,6 +133,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-responsive-images');
   grunt.loadNpmTasks('grunt-uncss');
 
-  grunt.registerTask('default', ['uglify', 'imagemin', 'cssmin', 'htmlmin', 'responsive_images']);
+  grunt.registerTask('default', ['uglify', 'imagemin', 'cssmin', 'htmlmin', 'responsive_images', 'uncss']);
 
 };
