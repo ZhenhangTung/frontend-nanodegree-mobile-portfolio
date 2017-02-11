@@ -384,7 +384,7 @@ var pizzaElementGenerator = function(i) {
   pizzaContainer.appendChild(pizzaImageContainer);
 
 
-  pizzaDescriptionContainer.style.width="65%";
+  pizzaDescriptionContainer.classList.add("col-md-6");
 
   pizzaName = document.createElement("h4");
   pizzaName.innerHTML = randomName();
@@ -532,10 +532,18 @@ function updatePositions() {
 }
 
 var lastScrollY = 0;
+var ticking = false;
+
 // Handle pizza movements on the background when user scroll the window 
 function scrollHandler() {
   lastScrollY = window.scrollY;
-  requestAnimationFrame(updatePositions);
+  if (! ticking) {
+    window.requestAnimationFrame(function() {
+      updatePositions();
+      ticking = false;
+    });
+  }
+  ticking = true;
 }
 
 
