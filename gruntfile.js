@@ -94,7 +94,7 @@ module.exports = function(grunt) {
             name: 'xsmall',
             width: '10%',
             suffix: '_xsmall',
-            quality: 5
+            quality: 10
           },
           {
             name: 'small',
