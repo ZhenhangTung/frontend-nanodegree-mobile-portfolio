@@ -89,7 +89,14 @@ module.exports = function(grunt) {
       dev: {
         options: {
           engine: 'im',
-          sizes: [{
+          sizes: [
+          {
+            name: 'extra-small',
+            width: '10%',
+            suffix: '_exsmall',
+            quality: 5
+          },
+          {
             name: 'small',
             width: '20%',
             suffix: '_small',
@@ -98,7 +105,7 @@ module.exports = function(grunt) {
             name: 'large',
             width: '100%',
             suffix: '_large',
-            quality: 60
+            quality: 40
           }]
         },
         files: [
