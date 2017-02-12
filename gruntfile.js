@@ -17,6 +17,12 @@ module.exports = function(grunt) {
             src: '**/*.js',
             dest: 'dist/views/js'
           },
+          {
+            expand: true, // for inline
+            cwd: 'views/js',
+            src: '**/*.js',
+            dest: 'views/js'
+          },
         ]
       }
     },
@@ -59,6 +65,13 @@ module.exports = function(grunt) {
           src: ['*.css', '!*.min.css'],
           dest: 'dist/css',
           ext: '.min.css'
+        },
+        {
+          expand: true, // for inline
+          cwd: 'views/css',
+          src: ['*.css', '!*.min.css'],
+          dest: 'views/css',
+          ext: '.min.css'
         }
         ]
       }
@@ -80,13 +93,13 @@ module.exports = function(grunt) {
             expand: true,
             cwd: './views',
             src: ['*.html'],
-            dest: 'views'
+            dest: './views'
           }
           ]
       }
     },
     responsive_images: {
-      dev: {
+      dist: {
         options: {
           engine: 'im',
           sizes: [
@@ -101,7 +114,14 @@ module.exports = function(grunt) {
             width: '20%',
             suffix: '_small',
             quality: 10
-          },{
+          },
+          {
+            name: 'medium',
+            width: '50%',
+            suffix: '_medium',
+            quality: 40
+          },
+          {
             name: 'large',
             width: '100%',
             suffix: '_large',
@@ -124,13 +144,26 @@ module.exports = function(grunt) {
         ]
       }
     },
-    uncss: {
+    inline: {
       dist: {
-        files: {
-          'dist/views/css/bootstrap-grid.min.css': ['views/pizza.html']
-        }
+        options:{
+          uglify: true,
+          inlineTagAttributes: {
+            js: 'data-inlined="true"',  // Adds ```<script data-inlined="true">...</script>```
+            css: 'data-inlined="true"'  // Adds ```<style data-inlined="true">...</style>```
+          }
+        },
+        src: 'views/pizza.html',
+        dest: 'views/pizza.html'
       }
-    }
+    },
+    // uncss: {
+    //   dist: {
+    //     files: {
+    //       'views/css/bootstrap-grid.min.css': ['views/pizza.html']
+    //     }
+    //   }
+    // }
   });
   
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -139,7 +172,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-responsive-images');
   grunt.loadNpmTasks('grunt-uncss');
+  grunt.loadNpmTasks('grunt-inline');
 
-  grunt.registerTask('default', ['uglify', 'imagemin', 'cssmin', 'htmlmin', 'responsive_images', 'uncss']);
+  grunt.registerTask('default', ['uglify', 'imagemin', 'cssmin', 'inline', 'htmlmin', 'responsive_images']);
 
 };
