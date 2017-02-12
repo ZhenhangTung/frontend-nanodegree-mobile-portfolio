@@ -1,6 +1,9 @@
 ## Website Performance Optimization portfolio project
 This project is one of Udacity's Frontend Nanodegree projects. We use [Pagespeed Insights](https://developers.google.com/speed/pagespeed/insights/) to measure the performance of webpage.
 
+## Project on production environment
+You could visit [this link](http://zhenhangtung.github.io/frontend-nanodegree-mobile-portfolio/).
+
 ## How to use this project
 1. Clone this project
 2. Run following code to install the environment
