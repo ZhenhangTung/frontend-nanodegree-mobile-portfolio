@@ -146,15 +146,28 @@ module.exports = function(grunt) {
     },
     inline: {
       dist: {
-        options:{
-          uglify: true,
-          inlineTagAttributes: {
-            js: 'data-inlined="true"',  // Adds ```<script data-inlined="true">...</script>```
-            css: 'data-inlined="true"'  // Adds ```<style data-inlined="true">...</style>```
+        files: [
+          {
+            src: 'views/pizza.html',
+            dest: 'views/pizza.html'
+          },
+          {
+            src: 'project-2048.html',
+            dest: 'project-2048.html'
+          },
+          {
+            src: 'project-mobile.html',
+            dest: 'project-mobile.html'
+          },
+          {
+            src: 'project-webperf.html',
+            dest: 'project-webperf.html'
+          },
+          {
+            src: 'index.html',
+            dest: 'index.html'
           }
-        },
-        src: 'views/pizza.html',
-        dest: 'views/pizza.html'
+        ]
       }
     },
     // uncss: {
