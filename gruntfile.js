@@ -152,20 +152,9 @@ module.exports = function(grunt) {
             dest: 'views/pizza.html'
           },
           {
-            src: 'project-2048.html',
-            dest: 'project-2048.html'
-          },
-          {
-            src: 'project-mobile.html',
-            dest: 'project-mobile.html'
-          },
-          {
-            src: 'project-webperf.html',
-            dest: 'project-webperf.html'
-          },
-          {
-            src: 'index.html',
-            dest: 'index.html'
+            src: ['*.html'],
+            cwd: './',
+            dest: './'
           }
         ]
       }
