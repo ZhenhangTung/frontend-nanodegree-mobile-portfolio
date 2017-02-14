@@ -16,7 +16,13 @@ module.exports = function(grunt) {
             cwd: 'views/js',
             src: '**/*.js',
             dest: 'dist/views/js'
-          }
+          },
+          {
+            expand: true, // for inline
+            cwd: 'views/js',
+            src: '**/*.js',
+            dest: 'views/js'
+          },
         ]
       }
     },
@@ -51,14 +57,21 @@ module.exports = function(grunt) {
           cwd: 'views/css',
           src: ['*.css', '!*.min.css'],
           dest: 'dist/views/css',
-          // ext: '.min.css'
+          ext: '.min.css'
         },
         {
           expand: true,
           cwd: 'css',
           src: ['*.css', '!*.min.css'],
           dest: 'dist/css',
-          // ext: '.min.css'
+          ext: '.min.css'
+        },
+        {
+          expand: true, // for inline
+          cwd: 'views/css',
+          src: ['*.css', '!*.min.css'],
+          dest: 'views/css',
+          ext: '.min.css'
         }
         ]
       }
@@ -72,15 +85,15 @@ module.exports = function(grunt) {
           files: [
           {
             expand: true,
-            cwd: './',
+            cwd: './dist/',
             src: ['*.html'],
-            dest: 'dist/'
+            dest: './dist/'
           },
           {
             expand: true,
-            cwd: './views',
+            cwd: './dist/views',
             src: ['*.html'],
-            dest: 'dist/views'
+            dest: './dist/views'
           }
           ]
       }
@@ -135,20 +148,20 @@ module.exports = function(grunt) {
       dist: {
         files: [
           {
-            src: 'dist/views/pizza.html',
+            src: 'views/pizza.html',
             dest: 'dist/views/pizza.html'
           },
           {
             src: ['*.html'],
             cwd: './',
-            dest: 'dist/'
+            dest: './dist/'
           }
         ]
       }
     },
     'string-replace': {
       prod_html: {
-        src: 'views/*.html',
+        src: './dist/views/pizza.html',
         dest: './dist/views/',
         options: {
           replacements: [
@@ -170,7 +183,7 @@ module.exports = function(grunt) {
           },
           ]
         }
-      },
+      }
     }
   });
 
@@ -183,6 +196,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-inline');
   grunt.loadNpmTasks('grunt-string-replace');
 
-  grunt.registerTask('default', ['uglify', 'imagemin', 'cssmin', 'string-replace', 'inline', 'htmlmin', 'responsive_images']);
+  grunt.registerTask('default', ['uglify', 'string-replace:prod_js', 'imagemin', 'cssmin', 'inline', 'string-replace:prod_html', 'htmlmin', 'responsive_images']);
 
 };
