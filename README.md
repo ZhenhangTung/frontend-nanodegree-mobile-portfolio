@@ -13,8 +13,9 @@ You could visit [this link](http://zhenhangtung.github.io/frontend-nanodegree-mo
 	$> grunt
 	```
 	
-3. Open the index.html file
-4. Or you cold run this project on your local server
+3. All production code will be located at ```dist```
+4. Open ```dist/index.html```
+5. Or you cold run this project on your local server
 
 	* For those who use Python on the local machine
 
@@ -28,9 +29,9 @@ You could visit [this link](http://zhenhangtung.github.io/frontend-nanodegree-mo
   $> php -S localhost:8000
   ```
   
-5. Open a browser and visit localhost:8000
+6. Open a browser and visit localhost:8000
 
-6. Also, you could download and install [ngrok](https://ngrok.com/) to the top-level of your project directory to make your local server accessible remotely.
+7. Also, you could download and install [ngrok](https://ngrok.com/) to the top-level of your project directory to make your local server accessible remotely.
 
   ``` bash
   $> cd /path/to/your-project-folder
