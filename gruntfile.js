@@ -51,14 +51,14 @@ module.exports = function(grunt) {
           cwd: 'views/css',
           src: ['*.css', '!*.min.css'],
           dest: 'dist/views/css',
-          ext: '.min.css'
+          // ext: '.min.css'
         },
         {
           expand: true,
           cwd: 'css',
           src: ['*.css', '!*.min.css'],
           dest: 'dist/css',
-          ext: '.min.css'
+          // ext: '.min.css'
         }
         ]
       }
@@ -74,13 +74,13 @@ module.exports = function(grunt) {
             expand: true,
             cwd: './',
             src: ['*.html'],
-            dest: './'
+            dest: 'dist/'
           },
           {
             expand: true,
             cwd: './views',
             src: ['*.html'],
-            dest: './views'
+            dest: 'dist/views'
           }
           ]
       }
@@ -135,24 +135,43 @@ module.exports = function(grunt) {
       dist: {
         files: [
           {
-            src: 'views/pizza.html',
-            dest: 'views/pizza.html'
+            src: 'dist/views/pizza.html',
+            dest: 'dist/views/pizza.html'
           },
           {
             src: ['*.html'],
             cwd: './',
-            dest: './'
+            dest: 'dist/'
           }
         ]
       }
     },
-    // uncss: {
-    //   dist: {
-    //     files: {
-    //       'views/css/bootstrap-grid.min.css': ['views/pizza.html']
-    //     }
-    //   }
-    // }
+    'string-replace': {
+      prod_html: {
+        src: 'views/*.html',
+        dest: './dist/views/',
+        options: {
+          replacements: [
+          {
+            pattern: 'images/pizza.png',
+            replacement: 'images/pizza-large_large.png'
+          },
+          ]
+        }
+      },
+      prod_js: {
+        src: './dist/views/js/*.js',
+        dest: './dist/views/js/',
+        options: {
+          replacements: [
+          {
+            pattern: 'images/pizza.png',
+            replacement: 'images/pizza-large_large.png'
+          },
+          ]
+        }
+      },
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -162,7 +181,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-responsive-images');
   grunt.loadNpmTasks('grunt-uncss');
   grunt.loadNpmTasks('grunt-inline');
+  grunt.loadNpmTasks('grunt-string-replace');
 
-  grunt.registerTask('default', ['uglify', 'imagemin', 'cssmin', 'inline', 'htmlmin', 'responsive_images']);
+  grunt.registerTask('default', ['uglify', 'imagemin', 'cssmin', 'string-replace', 'inline', 'htmlmin', 'responsive_images']);
 
 };
