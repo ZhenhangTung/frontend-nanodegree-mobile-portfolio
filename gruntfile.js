@@ -16,13 +16,7 @@ module.exports = function(grunt) {
             cwd: 'views/js',
             src: '**/*.js',
             dest: 'dist/views/js'
-          },
-          {
-            expand: true, // for inline
-            cwd: 'views/js',
-            src: '**/*.js',
-            dest: 'views/js'
-          },
+          }
         ]
       }
     },
@@ -65,19 +59,12 @@ module.exports = function(grunt) {
           src: ['*.css', '!*.min.css'],
           dest: 'dist/css',
           ext: '.min.css'
-        },
-        {
-          expand: true, // for inline
-          cwd: 'views/css',
-          src: ['*.css', '!*.min.css'],
-          dest: 'views/css',
-          ext: '.min.css'
         }
         ]
       }
     },
     htmlmin: {                                     // Task
-      dist: {    
+      dist: {
           options: {                                 // Target options
             removeComments: true,
             collapseWhitespace: true
@@ -167,7 +154,7 @@ module.exports = function(grunt) {
     //   }
     // }
   });
-  
+
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
