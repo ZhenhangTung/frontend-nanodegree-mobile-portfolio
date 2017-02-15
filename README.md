@@ -6,16 +6,23 @@ You could visit [this link](http://zhenhangtung.github.io/frontend-nanodegree-mo
 
 ## How to use this project
 1. Clone this project
-2. Run following code to install the environment
+2. Install ImageMagick
+ 
+	```
+	$> brew install ImageMagick
+	```
+	If you are using ubuntu, checkout this [post](https://www.enovate.co.uk/blog/2015/12/16/how-to-install-imagemagick-from-source-on-ubuntu-14.04) to install ImageMagick.
+
+3. Run following code to install the environment
 
 	```bash
 	$> npm install
 	$> grunt
 	```
 
-3. All production code will be located at ```dist```
-4. Open ```dist/index.html```
-5. Or you cold run this project on your local server
+4. All production code will be located at ```dist```
+5. Open ```dist/index.html```
+6. Or you cold run this project on your local server
 
 
 	* For those who use Python on the local machine
@@ -30,9 +37,9 @@ You could visit [this link](http://zhenhangtung.github.io/frontend-nanodegree-mo
   $> php -S localhost:8000
   ```
 
-6. Open a browser and visit localhost:8000
+7. Open a browser and visit localhost:8000
 
-7. Also, you could download and install [ngrok](https://ngrok.com/) to the top-level of your project directory to make your local server accessible remotely.
+8. Also, you could download and install [ngrok](https://ngrok.com/) to the top-level of your project directory to make your local server accessible remotely.
 
   ``` bash
   $> cd /path/to/your-project-folder
