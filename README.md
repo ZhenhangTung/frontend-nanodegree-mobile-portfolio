@@ -1,13 +1,24 @@
 ## Website Performance Optimization portfolio project
-This project is one of Udacity's Frontend Nanodegree projects. We use [Pagespeed Insights](https://developers.google.com/speed/pagespeed/insights/) to measure the performance of webpage.
+This project is one of Udacity's Frontend Nanodegree projects. We use [Pagespeed Insights](https://developers.google.com/speed/pagespeed/insights/) to measure the performance of webpage. The original project files exist in src folder.
 
 ## Project on production environment
 You could visit [this link](http://zhenhangtung.github.io/frontend-nanodegree-mobile-portfolio/).
 
+## Project Optimization Outline
+1. Added classes like ```content-li``` to DOM in ```index.html```, ```project-2048.html```, ```project-mobile.html``` and ```project-webperf.html```.
+2. Changed some CSS name in ```css/style.css``` file.
+3. Changed the CSS's ```href``` location and added ```__inline=true``` to ```<link>``` html files.
+4. Added media query to html files.
+5. Encoded an image in ```views/pizza.html``` into base46 file.
+6. Changed some image file names in ```img``` tags in ```views/pizza.html```.
+7. Add ```scrollHandler``` to ```views/js/main.js```.
+8. Made some changes to function ```changePizzaSizes``` in ```views/js/main.js```.
+9. Made some changes to function ```updatePositions``` in ```views/js/main.js```.
+
 ## How to use this project
 1. Clone this project
 2. Install ImageMagick
- 
+
 	```
 	$> brew install ImageMagick
 	```
